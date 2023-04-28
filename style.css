@@ -1,4 +1,17 @@
-.begin_screen{
-    background-image: url('./images/begin.png');
-    
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+    aspect-ratio: 8/5;
+    object-fit: cover;
+}
+.start_button{
+    background-color: rgb(4, 209, 4);
+    padding: 0.5rem 3rem;
+    border-radius: 0.5rem;
+    color: #fff;
 }
