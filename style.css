@@ -11,15 +11,26 @@ img{
     position: absolute;
 }
 .start_button{
-    background-color: rgb(4, 209, 4);
-    padding: 0.5rem 3rem;
+    background-color: rgb(22 189 22);
+    padding: 0.5rem 2rem;
     border-radius: 0.5rem;
     color: #fff;
     position: relative;
 }
 .button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0 auto;
+    height: 20%;
+    width: fit-content;
+    transform: translateY(-50%);
+    padding: 30rem 1rem 0 1.2rem;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 0){
+    .start_button{
+        padding: 0.3rem 0.7rem;
+        font-size: .9rem;
+    }
+    .button{
+        padding: 16rem 1rem 0 1.2rem;
+    }
 }
