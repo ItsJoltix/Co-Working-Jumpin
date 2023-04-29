@@ -8,10 +8,18 @@ img{
     max-width: 100%;
     aspect-ratio: 8/5;
     object-fit: cover;
+    position: absolute;
 }
 .start_button{
     background-color: rgb(4, 209, 4);
     padding: 0.5rem 3rem;
     border-radius: 0.5rem;
     color: #fff;
+    position: relative;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
