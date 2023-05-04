@@ -1,0 +1,104 @@
+.achtergrond img {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    order: -1;
+    position: relative;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-top: 3%;
+    position: absolute;
+}
+
+.container ul li {
+    width: 25%;
+    list-style: none;
+    text-align: center;
+}
+
+.container ul li img {
+    width: 100%;
+    max-width: 4rem;
+    height: auto;
+    justify-content: space-evenly;
+     transition: 1s ease;
+}
+    
+    .container ul li img:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 1s ease;
+    }
+
+.curved{
+    color: #fff;
+    position: absolute;
+    top: 15%;
+   max-width: 35%;
+   font-size: 2rem;
+   font-weight: bold;
+   text-shadow: black 0.1em;
+}
+
+  .curved span {
+    display: inline-block;
+    position: relative;
+    transform-origin: 50% 100%;
+    bottom: 0.5em;
+  }
+  .curved span:nth-child(1) {
+    transform: rotate(-45deg);
+  }
+  .curved span:nth-child(2) {
+    transform: rotate(-30deg);
+    margin-top: 0%;
+  }
+  .curved span:nth-child(3) {
+    transform: rotate(-9deg);
+  }
+  .curved span:nth-child(4) {
+    transform: rotate(-6deg);
+  }
+  .curved span:nth-child(5) {
+    transform: rotate(-3deg);
+  }
+  .curved span:nth-child(6) {
+    transform: rotate(0deg);
+  }
+  .curved span:nth-child(7) {
+    transform: rotate(3deg);
+  }
+  .curved span:nth-child(8) {
+    transform: rotate(6deg);
+  }
+  .curved span:nth-child(9) {
+    transform: rotate(9deg);
+  }
+  .curved span:nth-child(10) {
+    transform: rotate(12deg);
+  }
+  .curved span:nth-child(11) {
+    transform: rotate(15deg);
+  }
+  
+.letters{
+  color: white; text-shadow: black 0.1em 0.1em 0.2em
+}
+
+  
+
