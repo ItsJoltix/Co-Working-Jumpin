@@ -1,36 +1,56 @@
-body{
-    margin: 0;
+/* ROOT */
+:root{
+    --white: #f4f6f6;
+    --black: #010111;
+    --bg: #3794ff;
 }
-a{
-    text-decoration: none;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
-img{
-    max-width: 100%;
-    aspect-ratio: 8/5;
-    object-fit: cover;
-    position: absolute;
-}
-.start_button{
-    background-color: rgb(22 189 22);
-    padding: 0.5rem 2rem;
-    border-radius: 0.5rem;
-    color: #fff;
-    position: relative;
-}
-.button{
+.container{
+    max-width: 120rem;
     margin: 0 auto;
-    height: 20%;
-    width: fit-content;
-    transform: translateY(-50%);
-    padding: 30rem 1rem 0 1.2rem;
+    padding: 0 clamp(1rem,4vw,8rem);
 }
 
-@media only screen and (max-width: 600px) and (min-width: 0){
-    .start_button{
-        padding: 0.3rem 0.7rem;
-        font-size: .9rem;
-    }
-    .button{
-        padding: 16rem 1rem 0 1.2rem;
-    }
+html,
+body {
+    background-color: var(--white);
+    color: var(--bg);
+    font-family: 'Quicksand', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+
+}
+
+.game-board{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    justify-content: center;
+    background-color: #3794ff;
+    border-radius: 2rem;
+    border: #00314e69 2px solid;
+    padding: 1rem;
+    width: fit-content;
+    gap: 20px;
+
+}
+.box {
+    background-color: #00314e69;
+    border-radius: 50%;
+}
+
+.frog{
+    background: url("./frog.png");
+}
+
+.hole{
+    background: brown;
+}
+
+.leli{
+    background: green;
 }
