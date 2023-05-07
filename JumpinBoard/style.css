@@ -1,0 +1,56 @@
+/* ROOT */
+:root{
+    --white: #f4f6f6;
+    --black: #010111;
+    --bg: #3794ff;
+}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+.container{
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0 clamp(1rem,4vw,8rem);
+}
+
+html,
+body {
+    background-color: var(--white);
+    color: var(--bg);
+    font-family: 'Quicksand', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+
+}
+
+.game-board{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    justify-content: center;
+    background-color: #3794ff;
+    border-radius: 2rem;
+    border: #00314e69 2px solid;
+    padding: 1rem;
+    width: fit-content;
+    gap: 20px;
+
+}
+.box {
+    background-color: #00314e69;
+    border-radius: 50%;
+}
+
+.frog{
+    background: url("./frog.png");
+}
+
+.hole{
+    background: brown;
+}
+
+.leli{
+    background: green;
+}
