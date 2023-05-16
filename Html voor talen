@@ -1,0 +1,16 @@
+<div class = "lang-menu">
+ <div class="selected-lang">
+ Nederlands
+ </div>
+ <ul> 
+<li><a class=”de”>German</a>
+ </li> 
+<li><a class=”fr”>French</a>
+</li> 
+<li><a class=”us”>English</a>
+</li> 
+<li><a class=”ae”>Arabic</a>
+ </li>
+ </ul>
+ </div> 
+</nav>
