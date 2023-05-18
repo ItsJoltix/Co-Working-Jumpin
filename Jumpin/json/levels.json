@@ -1,0 +1,24 @@
+{
+  "levels": [
+    {
+      "holes": [0, 4, 12, 20, 24],
+      "leli": [6, 10, 15],
+      "frog": [20, 2],
+      "reiger": {
+        "head": [6, 8],
+        "tail": [1, 9],
+        "direction": "bottom"
+      }
+    },
+    {
+      "holes": [0, 4, 12, 20, 24],
+      "leli": [14],
+      "frog": [16, 22],
+      "reiger": {
+        "head": [6, 8],
+        "tail": [1, 9],
+        "direction": "bottom"
+      }
+    }
+  ]
+}
