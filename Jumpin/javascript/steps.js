@@ -1,13 +1,14 @@
 'use strict';
 
+// Haal alle elementen op die we nodig hebben
 const steps = document.querySelectorAll('.steps li');
 const contents = document.querySelectorAll('.rulesContent');
 
-// Stap 1 tonen bij het laden van de page
+// Toon de inhoud van stap 1 bij het laden van de pagina
 contents[0].style.display = 'block';
 steps[0].classList.add('current');
 
-// Functie voor van stap te veranderen
+// Voeg een click event listener toe aan elke stap
 steps.forEach((step, index) => {
     step.addEventListener('click', () => {
         // Verberg alle inhoud

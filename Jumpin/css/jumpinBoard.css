@@ -1,0 +1,172 @@
+/* ROOT */
+
+.game-board{
+    display: grid;
+    grid-template-columns: 30px 30px 30px 30px 30px;
+    grid-template-rows: 30px 30px 30px 30px 30px;
+    justify-content: center;
+    background-color: #3794ff;
+    border-radius: 2rem;
+    border: #00314e69 2px solid;
+    padding: 1rem;
+    width: fit-content;
+    gap: 20px;
+
+}
+.box {
+    background-color: #00314e69;
+    border-radius: 50%;
+}
+
+.frog {
+    background-image: url("../recources/Frog.png");
+    background-position: center;
+    background-size: contain; /* Change background-size to contain */
+    background-repeat: no-repeat; /* Add background-repeat property */
+}
+
+.hole{
+    background-color: #542828;
+}
+
+.leli {
+    background: url("../recources/LeliLeaf.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+}
+
+.highlight{
+    border-style: solid;
+    border-color: white;
+}
+.reigerHead{
+    background: url("../recources/RijgerHead.png");
+}
+.reigerTail{
+    background: url("../recources/RijgerTail.png");
+}
+.reigerLeftHeadPosition{
+    background-size: 65px;
+    transform: rotate(0deg);
+    background-position: 2% 43%;
+    border-radius: 0%;
+}
+.reigerLeftTailPosition{
+    background-size: 65px;
+    transform: rotate(0deg);
+    border-radius: 0%;
+    background-position: -97% 43%;
+}
+
+.reigerBottomHeadPosition{
+    background-size: 65px;
+    transform: rotate(-90deg);
+    background-position: 2% 43%;
+    border-radius: 0%;
+}
+.reigerBottomTailPosition{
+    background-size: 65px;
+    transform: rotate(-90deg);
+    border-radius: 0%;
+    background-position: -97% 43%;
+}
+
+.reigerRightHeadPosition{
+    background-size: 65px;
+    transform: rotate(-180deg);
+    background-position: 2% 43%;
+    border-radius: 0%;
+    transform: scaleX(-1);
+}
+.reigerRightTailPosition{
+    background-size: 65px;
+    transform: rotate(-180deg);
+    border-radius: 0%;
+    background-position: -97% 43%;
+    transform: scaleX(-1);
+}
+
+.reigerTopHeadPosition{
+    background-size: 65px;
+    transform: rotate(-270deg);
+    background-position: 2% 43%;
+    border-radius: 0%;
+}
+.reigerTopTailPosition{
+    background-size: 65px;
+    transform: rotate(-270deg);
+    border-radius: 0%;
+    background-position: -97% 43%;
+}
+
+@media(min-width: 46.875em) {
+
+    .game-board{
+        display: grid;
+        grid-template-columns: 65px 65px 65px 65px 65px;
+        grid-template-rows: 65px 65px 65px 65px 65px;
+        justify-content: center;
+        background-color: #3794ff;
+        border-radius: 2rem;
+        border: #00314e69 2px solid;
+        padding: 1rem;
+        width: fit-content;
+        gap: 20px;
+    }
+
+    .reigerLeftHeadPosition{
+        background-size: 150px;
+        transform: rotate(0deg);
+        background-position: 2% 43%;
+        border-radius: 0%;
+    }
+    .reigerLeftTailPosition{
+        background-size: 150px;
+        transform: rotate(0deg);
+        border-radius: 0%;
+        background-position: -97% 43%;
+    }
+
+    .reigerBottomHeadPosition{
+        background-size: 150px;
+        transform: rotate(-90deg);
+        background-position: 2% 43%;
+        border-radius: 0%;
+    }
+    .reigerBottomTailPosition{
+        background-size: 150px;
+        transform: rotate(-90deg);
+        border-radius: 0%;
+        background-position: -97% 43%;
+    }
+
+    .reigerRightHeadPosition{
+        background-size: 150px;
+        transform: rotate(-180deg);
+        background-position: 2% 43%;
+        border-radius: 0%;
+        transform: scaleX(-1);
+    }
+    .reigerRightTailPosition{
+        background-size: 150px;
+        transform: rotate(-180deg);
+        border-radius: 0%;
+        background-position: -97% 43%;
+        transform: scaleX(-1);
+    }
+
+    .reigerTopHeadPosition{
+        background-size: 150px;
+        transform: rotate(-270deg);
+        background-position: 2% 43%;
+        border-radius: 0%;
+    }
+    .reigerTopTailPosition{
+        background-size: 150px;
+        transform: rotate(-270deg);
+        border-radius: 0%;
+        background-position: -97% 43%;
+    }
+
+}
