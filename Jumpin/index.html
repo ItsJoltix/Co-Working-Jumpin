@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/jumpinBoard.css">
     <script src="./javascript/jumpinLogica.js" defer></script>
+    <script defer src="./javascript/talen.js"></script>
     <title>Homescreen</title>
 </head>
 <body>
@@ -30,10 +31,24 @@
             </button>
             <nav>
                 <ul>
-                    <li><a class="active" href="./">Home</a></li>
-                    <li><a href="./Spelregels/index.html">Spelregels</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <ul>
+                        <li><a class="active" href="./">Home</a></li>
+                        <li><a href="./Spelregels/index.html">Spelregels</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+    
+                    <div class="lang-menu">
+                        <select class="change-lang">
+                            <option class="selected-lang" value="ne" selected>NE</option>
+                            <option class="de" value="de">DE</option>
+                            <option class="en" value="en">EN</option>
+                            <option class="fr" value="fr">FR</option>
+                        </select>
+                    </div>
                 </ul>
+                <div class="lang">
+
+                </div>
             </nav>
             <script src="./javascript/hamburger.js"></script>
             </div>
@@ -42,7 +57,7 @@
         <h1 class="center"><span class="green">Jump</span>in</h1>
         <div class="sectionsMain">
             <section class="highScores">
-                <h2><span class="green">High</span>scores</h2>
+                <h2 class="lng-intro"><span class="green">High</span>scores</h2>
                 <ul>
                     <li>1. Davy - <span class="green">600</span></li>
                     <li>2. Bart - <span class="green">456</span></li>

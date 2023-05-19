@@ -1,16 +1,71 @@
-<div class = "lang-menu">
- <div class="selected-lang">
- Nederlands
- </div>
- <ul> 
-<li><a class=”de”>German</a>
- </li> 
-<li><a class=”fr”>French</a>
-</li> 
-<li><a class=”us”>English</a>
-</li> 
-<li><a class=”ae”>Arabic</a>
- </li>
- </ul>
- </div> 
-</nav>
+
+
+/* language toggle */
+
+.lang-menu {
+    width: 6rem;
+    text-align: right;
+    font-weight: bold;
+}
+.lang-menu select .selected-lang {
+    display: flex;   
+    justify-content: space-between;
+    line-height: 2.4;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+.lang-menu .selected-lang:before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url(../images/dutch_flag.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.lang-menu ul {
+    margin: 2.2rem 10rem;
+    padding: 0;
+    display: none;
+    background-color: #fff;
+    border: 0.1rem solid #f8f8f8;
+    top: 5rem;
+    right: -5rem;
+    width: 11rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.1rem 1rem rgb(0 0 0 / 20%);
+    position: absolute;
+}
+
+.lang-menu ul li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lang-menu ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 2rem;
+    vertical-align: middle;
+    margin-right: 0.9rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.de:before {
+    background-image: url(../images/german_flag.png);
+}
+
+.en:before {
+    background-image: url(../images/english_flag.png);
+}
+.fr:before {
+    background-image: url(../images/french-flag.png);
+}
+
+.lang-menu:hover ul {
+    display: block;
+}
