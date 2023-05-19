@@ -157,38 +157,7 @@ nav.hidden {
 
 /* language toggle */
 
-.lang-menu .selected-lang {
-    display: flex;   
-    justify-content: space-between;
-    line-height: 2.4;
-    cursor: pointer;
-    margin-top: 0.5rem;
-}
-.lang-menu .selected-lang:before {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url('../images/dutch_flag.png');
-}
-.change-lang{
-    width: 6rem;
-    height: 5rem;
-}
-.de:before {
-    background-image: url('../images/german_flag.png');
-}
 
-.en:before {
-    background-image: url('../images/english_flag.png');
-}
-.fr:before {
-    background-image: url('../images/french-flag.png');
-}
-
-.lang-menu:hover ul {
-    display: block;
-}
 
 @keyframes up {
     0%{

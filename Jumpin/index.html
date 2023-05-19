@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/jumpinBoard.css">
     <script src="./javascript/jumpinLogica.js" defer></script>
-    <script defer src="./javascript/talen.js"></script>
+    <script defer src="./javascript/taal.js"></script>
+    <script defer src="./javascript/vertaling.js"></script>
     <title>Homescreen</title>
 </head>
 <body>
@@ -37,23 +38,19 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
     
-                    <div class="lang-menu">
-                        <select class="change-lang">
-                            <option class="selected-lang" value="ne" selected>NE</option>
-                            <option class="de" value="de">DE</option>
-                            <option class="en" value="en">EN</option>
-                            <option class="fr" value="fr">FR</option>
-                        </select>
-                    </div>
+                    <select name="taal" aria-label="taal">
+                        <option value="ne">Dutch</option>
+                        <option value="de">German</option>
+                        <option value="en" selected>English</option>
+                        <option value="fr">French</option>
+                    </select>
                 </ul>
-                <div class="lang">
-
-                </div>
             </nav>
             <script src="./javascript/hamburger.js"></script>
             </div>
     </header>
     <main>
+        <h1 class="lng-intro">oke</h1>
         <h1 class="center"><span class="green">Jump</span>in</h1>
         <div class="sectionsMain">
             <section class="highScores">
@@ -96,7 +93,7 @@
                 </div>
             </section>
             <section class="snelsteTijden">
-                <h2><span class="green">Snelste</span> Tijden</h2>
+                <h2 class="lng-intro"><span class="green">Snelste</span> Tijden</h2>
                 <ul>
                     <li>1. Davy - <span class="green">10s</span></li>
                     <li>2. Bart - <span class="green">12s</span></li>
