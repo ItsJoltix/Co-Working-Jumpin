@@ -71,6 +71,12 @@ header{
     overflow-x: hidden;
 }
 
+select{
+    background-color: var(--greenTxt);
+    border-radius: .2rem;
+    padding: .2rem;
+}
+
 .logo{
     display: flex;
     flex-direction: row;
@@ -208,6 +214,7 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    align-items: center;
 }
 
 nav a {
@@ -360,7 +367,7 @@ footer .downloads img{
     nav ul {
         display: flex;
         justify-content: flex-end;
-        align-items: flex-end;
+        align-items: center;
     }
 
     nav a::after {
