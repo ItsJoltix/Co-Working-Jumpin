@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/jumpinBoard.css">
+    <script src="./javascript/jumpinLogica.js" defer></script>
+    <script defer src="./javascript/taal.js" ></script>
+    <script defer src="./javascript/vertaling.js"></script>
+    <title>Homescreen</title>
+</head>
+<body>
+<div class="container">
+    <header class="full-bleed">
+        <div class="content">
+            <div class="logo">
+                <img src="./recources/Jumpin_logo.png" alt="Frog that jumps logo">
+                <a  href=""><span class="green">Jump</span>in</a>
+            </div>
+            <button aria-expanded="false" class="hamburger" id="menu">
+                <span aria-hidden="true" class="icon">
+                    <span></span><span></span><span></span>
+                </span>
+                <span>Menu</span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a class="active" href="./">Home</a></li>
+                    <li><a href="./Spelregels/index.html">Spelregels</a></li>
+                    <li><a href="#">Contact</a></li>
+
+                    <select name="taal" aria-label="taal">
+                        <option value="ne">Dutch</option>
+                        <option value="de">German</option>
+                        <option value="en" selected>English</option>
+                        <option value="fr">French</option>
+                    </select>
+                </ul>
+            </nav>
+            <script src="./javascript/hamburger.js"></script>
+            </div>
+    </header>
+    <main>
+        <h1 class="center"><span class="green">Jump</span>in</h1>
+        <div class="sectionsMain">
+            <section class="highScores">
+                <h2><span class="green">High</span>scores</h2>
+                <ul>
+                    <li>1. Davy - <span class="green">600</span></li>
+                    <li>2. Bart - <span class="green">456</span></li>
+                    <li>3. Bob - <span class="green">329</span></li>
+                    <li>4. Nancy - <span class="green">315</span></li>
+                    <li>5. Rudy - <span class="green">256</span></li>
+                </ul>
+            </section>
+            <section class="game">
+                <div class="game-board">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </section>
+            <section class="snelsteTijden">
+                <h2><span class="green">Snelste</span> Tijden</h2>
+                <ul>
+                    <li>1. Davy - <span class="green">10s</span></li>
+                    <li>2. Bart - <span class="green">12s</span></li>
+                    <li>3. Bob - <span class="green">14s</span></li>
+                    <li>4. Nancy - <span class="green">19s</span></li>
+                    <li>5. Rudy - <span class="green">25s</span></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer class="full-bleed">
+        <div class="footerContent">
+            <div class="logo">
+                <img src="./recources/Jumpin_logo.png" alt="Frog that jumps logo">
+                <a  href=""><span class="green">Jump</span>in</a>
+            </div>
+            <div class="downloads">
+                <a href="#"><img src="./recources/google%20playstoregoogle%20playstore.png" alt="playstore download button"></a>
+                <a href="#"><img src="./recources/appstoreapp%20store.png" alt="app store download button"></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/steps.css">
+
+  <title>Spelregels</title>
+</head>
+<body>
+<div class="container">
+  <header class="full-bleed">
+    <div class="content">
+      <div class="logo">
+        <img src="../recources/Jumpin_logo.png" alt="Frog that jumps logo">
+        <a  href=""><span class="green">Jump</span>in</a>
+      </div>
+      <button aria-expanded="false" class="hamburger" id="menu">
+                <span aria-hidden="true" class="icon">
+                    <span></span><span></span><span></span>
+                </span>
+        <span>Menu</span>
+      </button>
+      <nav>
+        <ul>
+          <li><a  href="../">Home</a></li>
+          <li><a class="active" href="./">Spelregels</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <script src="../javascript/hamburger.js"></script>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="center underline"><span class="green">Spel</span>regels</h1>
+    <div class="rules">
+      <ul class="steps">
+        <li class="current"><a
+                href="#step1">Stap 1</a>
+        </li>
+
+        <li class=""><a
+                href="#step2">Stap 2</a>
+        </li>
+
+        <li class=""><a
+                href="#step3">Stap 3</a>
+        </li>
+      </ul>
+
+        <div id="step1" class="rulesContent">
+          <div class="contentStep">
+            <div class="infoRules">
+              <h3><span class="green">Stap</span> 1</h3>
+              <p>Kies één van de 8 beschikbare levels om te spelen. De moeilijkheid stijgt per level.</p>
+            </div>
+              <img src="https://d32bxxnq6qs937.cloudfront.net/sites/default/files/Jumpin-1_1.jpg" alt="alle speelbare levels die gekozen kunnen worden">
+          </div>
+        </div>
+
+        <div id="step2" class="rulesContent">
+          <div class="contentStep">
+            <div class="infoRules">
+              <h3><span class="green">Stap</span> 2</h3>
+              <p>Verplaats de kikkers en de reigers, totdat alle kikkers veilig in een hol zitten.</p>
+            </div>
+              <img src="https://d32bxxnq6qs937.cloudfront.net/sites/default/files/Jumpin-2_1.jpg" alt="Voorbeeld hoe kikkers en reigers zich verplaatsen">
+          </div>
+        </div>
+
+        <div id="step3" class="rulesContent">
+          <div class="contentStep">
+            <div class="infoRules">
+              <h3><span class="green">Stap</span> 3</h3>
+              <p>Je hebt een oplossing gevonden wanneer alle kikkers veilig in een hol zitten.</p>
+            </div>
+              <img src="https://d32bxxnq6qs937.cloudfront.net/sites/default/files/Jumpin-3_1.jpg" alt="voorbeeld van een oplossing voor een level">
+          </div>
+        </div>
+    </div>
+
+  </main>
+
+  <footer class="full-bleed">
+    <div class="footerContent">
+      <div class="logo">
+        <img src="../recources/Jumpin_logo.png" alt="Frog that jumps logo">
+        <a  href=""><span class="green">Jump</span>in</a>
+      </div>
+      <div class="downloads">
+        <a href="#"><img src="../recources/google%20playstoregoogle%20playstore.png" alt="playstore download button"></a>
+        <a href="#"><img src="../recources/appstoreapp%20store.png" alt="app store download button"></a>
+      </div>
+    </div>
+  </footer>
+</div>
+<script src="../javascript/steps.js"></script>
+</body>
+</html>
