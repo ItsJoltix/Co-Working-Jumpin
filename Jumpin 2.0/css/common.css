@@ -443,6 +443,15 @@ footer .downloads img{
     }
 
     /*-MAIN--------*/
+    .mute-btn{
+        background-color: rgba(171, 230, 2, 1);
+        border-radius: 0.5em;
+        border: rgba(171, 230, 2, 1) 2px solid;
+    }
+    .mute-btn img{
+        width: 4rem;
+        height: 4rem;
+    }
 
 
     /*-FOOTER-------------*/
