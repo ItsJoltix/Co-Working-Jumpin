@@ -1,0 +1,142 @@
+.achtergrond img {
+    width: 30rem;
+    height: 30rem;
+    background: var(--green);
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    position: absolute;
+    margin-top: -0.5em;
+}
+.achtergrond2 img {
+    width: 30rem;
+    height: 30rem;
+    background: var(--green);
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    position: absolute;
+    margin-top: -26.5em;
+}
+.achtergrond3 img {
+  width: 30rem;
+  height: 30rem;
+  background: var(--green);
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  position: absolute;
+  margin-top: -28em;
+}
+.levelsNaastElkaar ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;   
+}
+
+.levelsNaastElkaar li {
+    width: 25%; /* Adjusted to make two items appear side by side */
+    box-sizing: border-box;
+    padding: 1rem;
+    display: block;
+    position: relative;
+}
+.levelsNaastElkaar img {
+    width: 100%;
+    height: auto;
+   
+}
+.levelsNaastElkaar li:nth-child(-n+4) img {
+    margin-top: 7em;
+}
+.levelsNaastElkaar2 ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;   
+  margin-top: -27em;
+}
+.levelsNaastElkaar2 li {
+  width: 25%; /* Adjusted to make two items appear side by side */
+  box-sizing: border-box;
+  padding: 1rem;
+  display: block;
+  position: relative;
+  
+}
+.levelsNaastElkaar2 img {
+  width: 100%;
+  height: auto;
+}
+.levelsNaastElkaar2 li:nth-child(-n+4) img {
+  top: -4rem;
+}
+
+.contentLevels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  .contentLevels h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+  
+  @media (max-width: 768px) {
+    .contentLevels h1 {
+      font-size: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contentLevels h1 {
+      font-size: 2rem;
+    }
+  }
+  
+
+
+  .arrow{
+    cursor: pointer;
+    position:absolute;
+    display:block;
+    top: 78%;
+    left: 46%;
+    width:4em;
+    height: 4em;
+    border: solid 6px #999;
+    border-radius: 100%;
+    z-index: 1;
+    transition: all .2s linear;
+
+    &:before, &:after{
+      content:"";
+      position: absolute;
+      width:35%;
+      height: 10%;
+      top:41%;
+      left:55%;
+      background: #999;
+      z-index: 2;
+      transform: translate(-50%, -50%) rotate(45deg);
+      transition: all .2s linear;
+    }
+    &:after{
+      z-index: 3;
+      top:59%;
+      left:55%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &:hover{
+      border: solid 8px #777;
+      &:after, &:before{
+        background: #777;
+      }
+    }
+    &:active{
+      border: solid 8px #111;
+      &:after, &:before{
+        background: #111;
+      }
+    }
+  }
+
+
