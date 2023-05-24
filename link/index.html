@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/levels.css">
+    <script src="/javascript/steps.js" defer></script>
+    <title>Homescreen</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="full-bleed">
+            <div class="content">
+                <div class="logo">
+                    <img src="./recources/Jumpin_logo.png" alt="Frog that jumps logo">
+                    <a href=""><span class="green">Jump</span>in</a>
+                </div>
+                <button aria-expanded="false" class="hamburger" id="menu">
+                    <span aria-hidden="true" class="icon">
+                        <span></span><span></span><span></span>
+                    </span>
+                    <span>Menu</span>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a class="active" href="./">Home</a></li>
+                        <li><a href="./Spelregels/index.html">Spelregels</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <script src="./javascript/hamburger.js"></script>
+            </div>
+        </header>
+        <main>
+            <h1 class="center"><span class="green">Jump</span>in</h1>
+            <div class="sectionsMain">
+                <section class="highScores">
+                    <h2><span class="green">High</span>scores</h2>
+                    <ul>
+                        <li>1. Davy - <span class="green">600</span></li>
+                        <li>2. Bart - <span class="green">456</span></li>
+                        <li>3. Bob - <span class="green">329</span></li>
+                        <li>4. Nancy - <span class="green">315</span></li>
+                        <li>5. Rudy - <span class="green">256</span></li>
+                    </ul>
+                </section>
+
+                <section class="game">
+
+                    <div class="beginscherm">
+                        <div class="current">
+                            <img src="./recources/achtergrond.png" alt="achtergrond van kikkers">
+                            <a class="play-btn" id="play-btn" href="#levels"></a>
+                        </div>
+                    </div>
+
+                    <div id="levels" class="levelsScherm">
+                        <div class="contentLevels">
+                            <div class="info">
+                                <div class="achtergrond">
+                                    <img src="/recources/achtergrondLevel.png" alt="achtergrond">
+                                </div>
+                                <div class="curved">
+                                    <h1> JUMPIN LEVELS</h1>
+                                </div>
+                                <div class="levelsNaastElkaar">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier1.png" alt="mier level 1"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier2.png" alt="mier level 2"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier3.png" alt="mier level 3"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier4.png" alt="mier level 4"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier5.png" alt="mier level 5"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier6.png" alt="mier level 6"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier7.png" alt="mier level 7"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 1-8/mier8.png" alt="mier level 8"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="arrow" id="arrow" href="#levels2"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="levels2" class="levelsScherm2">
+                        <div class="contentLevels">
+                            <div class="info">
+                                <div class="achtergrond2">
+                                    <img src="/recources/achtergrondLevel.png" alt="achtergrond">
+                                </div>
+
+                                <div class="levelsNaastElkaar2">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier9.png" alt="mier level 1"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier10.png" alt="mier level 2"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier11.png" alt="mier level 3"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier12.png" alt="mier level 4"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier13.png" alt="mier level 5"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier14.png" alt="mier level 6"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier15.png" alt="mier level 7"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier16.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier17.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier18.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier19.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 9-20/mier20.png" alt="mier level 8"></a>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <span class="arrow" id="arrow3" href="#levels3 "></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="levels3" class="levelsScherm3">
+                        <div class="contentLevels">
+                            <div class="info">
+                                <div class="achtergrond3">
+                                    <img src="/recources/achtergrondLevel.png" alt="achtergrond">
+                                </div>
+
+                                <div class="levelsNaastElkaar2">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier21.png" alt="mier level 1"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier22.png" alt="mier level 2"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier23.png" alt="mier level 3"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier24.png" alt="mier level 4"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier25.png" alt="mier level 5"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier26.png" alt="mier level 6"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier27.png" alt="mier level 7"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier28.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier29.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier30.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier31.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 21-32/mier32.png" alt="mier level 8"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="arrow" id="arrow4" href="#levels4 "></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="levels4" class="levelsScherm4">
+                        <div class="contentLevels">
+                            <div class="info">
+                                <div class="achtergrond3">
+                                    <img src="/recources/achtergrondLevel.png" alt="achtergrond">
+                                </div>
+
+                                <div class="levelsNaastElkaar2">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier33.png" alt="mier level 1"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier34.png" alt="mier level 2"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier35.png" alt="mier level 3"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier36.png" alt="mier level 4"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier37.png" alt="mier level 5"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier38.png" alt="mier level 6"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier39.png" alt="mier level 7"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier40.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier41.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier42.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier43.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 33-44/mier44.png" alt="mier level 8"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="arrow" id="arrow5" href="#levels5 "></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="levels5" class="levelsScherm5">
+                        <div class="contentLevels">
+                            <div class="info">
+                                <div class="achtergrond3">
+                                    <img src="/recources/achtergrondLevel.png" alt="achtergrond">
+                                </div>
+
+                                <div class="levelsNaastElkaar2">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier45.png" alt="mier level 1"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier46.png" alt="mier level 2"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier47.png" alt="mier level 3"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src=".//level 45-56/mier48.png" alt="mier level 4"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier49.png" alt="mier level 5"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier50.png" alt="mier level 6"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier51.png" alt="mier level 7"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier52.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier53.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier54.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier55.png" alt="mier level 8"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 45-56/mier56.png" alt="mier level 8"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span class="arrow" id="arrow6" href="#levels6 "></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="levels6" class="levelsScherm6">
+                        <div class="contentLevels">
+                            <div class="info">
+                                <div class="achtergrond3">
+                                    <img src="/recources/achtergrondLevel.png" alt="achtergrond">
+                                </div>
+
+                                <div class="levelsNaastElkaar2">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><img src="/level 57-60/mier57.png" alt="mier level 1"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 57-60/mier58.png" alt="mier level 2"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 57-60/mier59.png" alt="mier level 3"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="./level 57-60/mier60.png" alt="mier level 4"></a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+                </section>
+
+                <section class="snelsteTijden">
+                    <h2><span class="green">Snelste</span> Tijden</h2>
+                    <ul>
+                        <li>1. Davy - <span class="green">10s</span></li>
+                        <li>2. Bart - <span class="green">12s</span></li>
+                        <li>3. Bob - <span class="green">14s</span></li>
+                        <li>4. Nancy - <span class="green">19s</span></li>
+                        <li>5. Rudy - <span class="green">25s</span></li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+        <footer class="full-bleed">
+            <div class="footerContent">
+                <div class="logo">
+                    <img src="./recources/Jumpin_logo.png" alt="Frog that jumps logo">
+                    <a href=""><span class="green">Jump</span>in</a>
+                </div>
+                <div class="downloads">
+                    <a href="#"><img src="./recources/google%20playstoregoogle%20playstore.png"
+                            alt="playstore download button"></a>
+                    <a href="#"><img src="./recources/appstoreapp%20store.png" alt="app store download button"></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
