@@ -12,14 +12,14 @@ let clickedBoxIndex;
 let clickedFrogOrReiger;
 let frogAmount = 0;
 
-let currentLevel = 0;
-let gameWon = false;
+let currentLevel = parseInt(localStorage.getItem('currentLevel')) || 0;let gameWon = false;
+
 
 fetch('../json/levels.json')
     .then(response => response.json())
     .then(data => {
         const levels = data.levels;
-        // Hier wordt het level gekozen --> Deze uiteindelijk dus aanpassen naar geselecteerde level
+        // Hier wordt het level gekozen --> initeel nul dus --> dit nog misschien aanpassen zodat het level locally gestockeerd wordt
         const levelData = levels[currentLevel];
         assignClassesToBoxes(levelData);
     })
@@ -98,7 +98,7 @@ function assignClassesToBoxes(levelData) {
     }
 }
 
-// Find frog and lelipads
+// kikkers en lelipads zoeken
 boxes.forEach(box => {
     if (box.classList.contains('frog')) {
         //frog = box;
@@ -109,22 +109,21 @@ boxes.forEach(box => {
 });
 
 
-// Add event listeners to boxes
+// aan de boxes de event listeners toevoegen
 boxes.forEach(box => {
     box.addEventListener('click', () => {
         if (!gameWon) {
             clickedBoxIndex = Array.from(gameBoard.children).indexOf(box);
 
 
-            // Remove all highlights if highlight is not clicked to move
+            // alle highlights verwijderen als niks is aangeduid
             if (!boxes[clickedBoxIndex].classList.contains('highlight')) {
                 removeAllHighlights();
 
-                // Remeber last clicked frog or reiger
+                // laatste aangeklikte characterke onthouden
                 const frogOrReigerClicked = isFrogOrReigerClicked(clickedBoxIndex);
                 clickedFrogOrReiger = boxes[clickedBoxIndex].className.includes('frog') ? 'frog' : boxes[clickedBoxIndex].className.includes('reiger') ? 'reiger' : '';
 
-                // Check if user chose frog or reiger element
                 frogOrReigerBoxClicked(frogOrReigerClicked, clickedFrogOrReiger);
             } else {
                 if (clickedFrogOrReiger === 'frog') {
@@ -135,61 +134,60 @@ boxes.forEach(box => {
                 removeAllHighlights();
             }
 
-            // Check if all frogs are in their hole
+            // Nakijken of de kikkers in de holes zitten --> zoja, gewonnen :)
             checkWon();
         }
     });
 });
 
-function frogOrReigerBoxClicked(frogOrReigerClicked, clickedFrogOrReiger){
+function frogOrReigerBoxClicked(frogOrReigerClicked, clickedFrogOrReiger) {
 
-    if(clickedFrogOrReiger === 'frog'){
+    if (clickedFrogOrReiger === 'frog') {
         frog = clickedBoxIndex;
-    }
-    else if(clickedFrogOrReiger === 'reiger'){
+    } else if (clickedFrogOrReiger === 'reiger') {
         let headOrTail = findClickedHeadOrTail();
 
-        if(headOrTail === 'Head'){
+        if (headOrTail === 'Head') {
             fillHeadFindTailAndDirection();
-        }else if(headOrTail === 'Tail'){
+        } else if (headOrTail === 'Tail') {
             fillTailFindHeadAndDirection();
         }
     }
 
-    if(frogOrReigerClicked){
+    if (frogOrReigerClicked) {
         const possibleMoveablePositions = findPositionsToMoveAndHighlight();
-        if(possibleMoveablePositions != null){
+        if (possibleMoveablePositions != null) {
             loopAndHighlight(possibleMoveablePositions);
         }
     }
 }
 
-function moveFrog(){
+function moveFrog() {
     boxes[frog].classList.remove('frog');
     boxes[clickedBoxIndex].classList.add('frog');
     boxes[clickedBoxIndex].classList.remove('highlight');
 }
 
-function moveReiger(){
-    switch(reigerDirection) {
+function moveReiger() {
+    switch (reigerDirection) {
         case 'Left':
             boxes[reigerHead].classList.remove('reigerHead');
             boxes[reigerHead].classList.remove('reigerLeftHeadPosition');
             boxes[reigerTail].classList.remove('reigerTail');
             boxes[reigerTail].classList.remove('reigerLeftTailPosition');
 
-            if(clickedBoxIndex < reigerHead){ // moving to left{
+            if (clickedBoxIndex < reigerHead) { // naar links bewegen
                 let nearestToLeftPart = reigerHead < reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerHead');
-                boxes[reigerHead-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerLeftHeadPosition');
-                boxes[reigerTail-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerTail');
-                boxes[reigerTail-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerLeftTailPosition');
-            }else{ // moving to right
+                boxes[reigerHead - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerHead');
+                boxes[reigerHead - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerLeftHeadPosition');
+                boxes[reigerTail - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerTail');
+                boxes[reigerTail - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerLeftTailPosition');
+            } else { // naar rechts bewegen
                 let nearestToRightPart = reigerHead > reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerHead');
-                boxes[reigerHead+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerLeftHeadPosition');
-                boxes[reigerTail+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerTail');
-                boxes[reigerTail+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerLeftTailPosition');
+                boxes[reigerHead + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerHead');
+                boxes[reigerHead + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerLeftHeadPosition');
+                boxes[reigerTail + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerTail');
+                boxes[reigerTail + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerLeftTailPosition');
             }
             break;
         case 'Bottom':
@@ -198,18 +196,18 @@ function moveReiger(){
             boxes[reigerTail].classList.remove('reigerTail');
             boxes[reigerTail].classList.remove('reigerBottomTailPosition');
 
-            if(clickedBoxIndex > reigerHead){ // moving to bottom
+            if (clickedBoxIndex > reigerHead) { // naar beneden bewegen
                 let nearestToBottomPart = reigerHead > reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerHead');
-                boxes[reigerHead+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerBottomHeadPosition');
-                boxes[reigerTail+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerTail');
-                boxes[reigerTail+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerBottomTailPosition');
-            }else{ // moving to top
+                boxes[reigerHead + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerHead');
+                boxes[reigerHead + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerBottomHeadPosition');
+                boxes[reigerTail + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerTail');
+                boxes[reigerTail + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerBottomTailPosition');
+            } else { // naar boven bewegen
                 let nearestToTopPart = reigerHead < reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerHead');
-                boxes[reigerHead-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerBottomHeadPosition');
-                boxes[reigerTail-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerTail');
-                boxes[reigerTail-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerBottomTailPosition');
+                boxes[reigerHead - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerHead');
+                boxes[reigerHead - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerBottomHeadPosition');
+                boxes[reigerTail - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerTail');
+                boxes[reigerTail - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerBottomTailPosition');
             }
             break;
         case 'Right':
@@ -218,18 +216,18 @@ function moveReiger(){
             boxes[reigerTail].classList.remove('reigerTail');
             boxes[reigerTail].classList.remove('reigerRightTailPosition');
 
-            if(clickedBoxIndex < reigerHead){ // moving to left{
+            if (clickedBoxIndex < reigerHead) { // naar links bewegen
                 let nearestToLeftPart = reigerHead < reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerHead');
-                boxes[reigerHead-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerRightHeadPosition');
-                boxes[reigerTail-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerTail');
-                boxes[reigerTail-(nearestToLeftPart-clickedBoxIndex)].classList.add('reigerRightTailPosition');
-            }else{ // moving to right
+                boxes[reigerHead - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerHead');
+                boxes[reigerHead - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerRightHeadPosition');
+                boxes[reigerTail - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerTail');
+                boxes[reigerTail - (nearestToLeftPart - clickedBoxIndex)].classList.add('reigerRightTailPosition');
+            } else { // naar rechts bewegen
                 let nearestToRightPart = reigerHead > reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerHead');
-                boxes[reigerHead+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerRightHeadPosition');
-                boxes[reigerTail+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerTail');
-                boxes[reigerTail+(clickedBoxIndex-nearestToRightPart)].classList.add('reigerRightTailPosition');
+                boxes[reigerHead + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerHead');
+                boxes[reigerHead + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerRightHeadPosition');
+                boxes[reigerTail + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerTail');
+                boxes[reigerTail + (clickedBoxIndex - nearestToRightPart)].classList.add('reigerRightTailPosition');
             }
             break;
         case 'Top':
@@ -238,135 +236,134 @@ function moveReiger(){
             boxes[reigerTail].classList.remove('reigerTail');
             boxes[reigerTail].classList.remove('reigerTopTailPosition');
 
-            if(clickedBoxIndex > reigerHead){ // moving to bottom
+            if (clickedBoxIndex > reigerHead) { // naar bottom bewegen
                 let nearestToBottomPart = reigerHead > reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerHead');
-                boxes[reigerHead+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerTopHeadPosition');
-                boxes[reigerTail+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerTail');
-                boxes[reigerTail+(clickedBoxIndex-nearestToBottomPart)].classList.add('reigerTopTailPosition');
-            }else{ // moving to top
+                boxes[reigerHead + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerHead');
+                boxes[reigerHead + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerTopHeadPosition');
+                boxes[reigerTail + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerTail');
+                boxes[reigerTail + (clickedBoxIndex - nearestToBottomPart)].classList.add('reigerTopTailPosition');
+            } else { // naar top bewegen
                 let nearestToTopPart = reigerHead < reigerTail ? reigerHead : reigerTail;
-                boxes[reigerHead-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerHead');
-                boxes[reigerHead-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerTopHeadPosition');
-                boxes[reigerTail-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerTail');
-                boxes[reigerTail-(nearestToTopPart-clickedBoxIndex)].classList.add('reigerTopTailPosition');
+                boxes[reigerHead - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerHead');
+                boxes[reigerHead - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerTopHeadPosition');
+                boxes[reigerTail - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerTail');
+                boxes[reigerTail - (nearestToTopPart - clickedBoxIndex)].classList.add('reigerTopTailPosition');
             }
             break;
         default:
-            reigerDirection = ''; // There went something wrong.
+            reigerDirection = ''; // als er iets mis ging
     }
 }
 
-function removeAllHighlights(){
+function removeAllHighlights() {
     boxes.forEach(box => {
         box.classList.remove('highlight');
     });
 }
 
-// Check if user chose frog or reiger element
-function isFrogOrReigerClicked(boxIndex){
-    if(boxes[boxIndex].classList.contains('frog') || boxes[boxIndex].classList.contains('reigerHead') || boxes[boxIndex].classList.contains('reigerTail')){
+// checken of speler reiger of kikker heeft aangeduid
+function isFrogOrReigerClicked(boxIndex) {
+    if (boxes[boxIndex].classList.contains('frog') || boxes[boxIndex].classList.contains('reigerHead') || boxes[boxIndex].classList.contains('reigerTail')) {
         return true;
     }
     return false;
 }
 
-function findPositionsToMoveAndHighlight(){
+function findPositionsToMoveAndHighlight() {
     const indexes = [];
 
-    if(clickedFrogOrReiger === 'frog'){
-        // Left possible moves
+    if (clickedFrogOrReiger === 'frog') {
+        // Left mogelijke moves
         let leftIndexes = leftMovesFrog();
-        if(leftIndexes.length !== 0) indexes.push(...leftIndexes);
-        // Right possible moves
+        if (leftIndexes.length !== 0) indexes.push(...leftIndexes);
+        // Right mogelijke moves
         let rightIndexes = rightMovesFrog();
-        if(rightIndexes.length !== 0) indexes.push(...rightIndexes);
-        // Top possible moves
+        if (rightIndexes.length !== 0) indexes.push(...rightIndexes);
+        // Top mogelijke moves
         let topIndexes = topMovesFrog();
-        if(topIndexes.length !== 0) indexes.push(...topIndexes);
-        // Bottom possible moves
+        if (topIndexes.length !== 0) indexes.push(...topIndexes);
+        // Bottom mogelijke moves
         let bottomIndexes = bottomMovesFrog();
-        if(bottomIndexes.length !== 0) indexes.push(...bottomIndexes);
-    }
-    else if(clickedFrogOrReiger === 'reiger'){
-        if(reigerDirection === 'Left'){
-            // Left possible moves
+        if (bottomIndexes.length !== 0) indexes.push(...bottomIndexes);
+    } else if (clickedFrogOrReiger === 'reiger') {
+        if (reigerDirection === 'Left') {
+            // Left mogelijke moves
             let leftIndexes = leftMovesReiger();
-            if(leftIndexes.length !== 0) indexes.push(...leftIndexes);
+            if (leftIndexes.length !== 0) indexes.push(...leftIndexes);
 
-            // Right possible moves
+            // Right mogelijke moves
             let rightIndexes = rightMovesReiger();
-            if(rightIndexes.length !== 0) indexes.push(...rightIndexes);
-        }
-        else if(reigerDirection === 'Bottom'){
-            // Top possible moves
+            if (rightIndexes.length !== 0) indexes.push(...rightIndexes);
+        } else if (reigerDirection === 'Bottom') {
+            // Top mogelijke moves
             let topIndexes = topMovesReiger();
-            if(topIndexes.length !== 0) indexes.push(...topIndexes);
-            // Bottom possible moves
+            if (topIndexes.length !== 0) indexes.push(...topIndexes);
+            // Bottom mogelijke moves
             let bottomIndexes = bottomMovesReiger();
-            if(bottomIndexes.length !== 0) indexes.push(...bottomIndexes);
-        }
-        else if(reigerDirection === 'Right'){
-            // Left possible moves
+            if (bottomIndexes.length !== 0) indexes.push(...bottomIndexes);
+        } else if (reigerDirection === 'Right') {
+            // Left mogelijke moves
             let leftIndexes = leftMovesReiger();
-            if(leftIndexes.length !== 0) indexes.push(...leftIndexes);
-            // Right possible moves
+            if (leftIndexes.length !== 0) indexes.push(...leftIndexes);
+            // Right mogelijke moves
             let rightIndexes = rightMovesReiger();
-            if(rightIndexes.length !== 0) indexes.push(...rightIndexes);
-        }
-        else if(reigerDirection === 'Top'){
-            // Top possible moves
+            if (rightIndexes.length !== 0) indexes.push(...rightIndexes);
+        } else if (reigerDirection === 'Top') {
+            // Top mogelijk moves
             let topIndexes = topMovesReiger();
-            if(topIndexes.length !== 0) indexes.push(...topIndexes);
-            // Bottom possible moves
+            if (topIndexes.length !== 0) indexes.push(...topIndexes);
+            // Bottom mogelijke moves
             let bottomIndexes = bottomMovesReiger();
-            if(bottomIndexes.length !== 0) indexes.push(...bottomIndexes);
+            if (bottomIndexes.length !== 0) indexes.push(...bottomIndexes);
         }
     }
 
     return indexes;
 }
 
-// Possible moves for frog
-function leftMovesFrog(){
+// Mogelijke moves voor kikkers
+function leftMovesFrog() {
     let indexes = [];
-    if(clickedBoxIndex % 5 !== 0){
+    if (clickedBoxIndex % 5 !== 0) {
         let leftIndices = checkIfLeftPossibleFrog(clickedBoxIndex % 5);
-        if(leftIndices !== undefined && leftIndices.length !== 0){
+        if (leftIndices !== undefined && leftIndices.length !== 0) {
             indexes.push(leftIndices);
         }
     }
     return indexes;
 }
-function topMovesFrog(){
+
+function topMovesFrog() {
     let indexes = [];
 
     let possibleTopSteps = Math.floor(clickedBoxIndex / 5);
-    if(clickedBoxIndex >= 5){
+    if (clickedBoxIndex >= 5) {
         let topIndices = checkIfTopPossibleFrog(possibleTopSteps);
-        if(topIndices !== undefined && topIndices.length !== 0){
+        if (topIndices !== undefined && topIndices.length !== 0) {
             indexes.push(topIndices);
         }
     }
     return indexes;
 }
-function rightMovesFrog(){
+
+function rightMovesFrog() {
     let indexes = [];
-    let possibleRightSteps = 5- (clickedBoxIndex + 1) % 5;
-    if((clickedBoxIndex + 1) % 5 !== 0){
+    let possibleRightSteps = 5 - (clickedBoxIndex + 1) % 5;
+    if ((clickedBoxIndex + 1) % 5 !== 0) {
         let rightIndices = checkIfRightPossibleFrog(possibleRightSteps);
-        if(rightIndices !== undefined && rightIndices.length !== 0){
+        if (rightIndices !== undefined && rightIndices.length !== 0) {
             indexes.push(rightIndices);
         }
     }
     return indexes;
 }
-function bottomMovesFrog(){
+
+function bottomMovesFrog() {
     let indexes = [];
     let possibleBottomSteps = 4 - Math.floor(clickedBoxIndex / 5);
-    if(clickedBoxIndex <= 19){
+    if (clickedBoxIndex <= 19) {
         let bottomIndices = checkIfBottomPossibleFrog(possibleBottomSteps);
-        if(bottomIndices !== undefined && bottomIndices.length !== 0){
+        if (bottomIndices !== undefined && bottomIndices.length !== 0) {
             indexes.push(bottomIndices);
         }
     }
@@ -374,221 +371,230 @@ function bottomMovesFrog(){
 }
 
 
-// Possible moves for reiger
-function leftMovesReiger(){
+// Mogelijk moves voor de reigers
+function leftMovesReiger() {
     let indexes = [];
-    if(reigerHead < reigerTail){
+    if (reigerHead < reigerTail) {
         clickedBoxIndex = reigerHead;
-    }else{
+    } else {
         clickedBoxIndex = reigerTail;
     }
-    if(clickedBoxIndex % 5 !== 0){
+    if (clickedBoxIndex % 5 !== 0) {
         let leftIndices = checkIfLeftPossibleReiger(clickedBoxIndex % 5);
-        if(leftIndices !== undefined && leftIndices.length !== 0){
+        if (leftIndices !== undefined && leftIndices.length !== 0) {
             indexes.push(...leftIndices);
         }
     }
     return indexes;
 }
-function bottomMovesReiger(){
+
+function bottomMovesReiger() {
     let indexes = [];
-    if(reigerHead < reigerTail){
+    if (reigerHead < reigerTail) {
         clickedBoxIndex = reigerTail;
-    }else{
+    } else {
         clickedBoxIndex = reigerHead;
     }
     let possibleTopSteps = 4 - Math.floor(clickedBoxIndex / 5);
-    if(clickedBoxIndex <= 19){
+    if (clickedBoxIndex <= 19) {
         let topIndices = checkIfBottomPossibleReiger(possibleTopSteps);
-        if(topIndices !== undefined && topIndices.length !== 0){
+        if (topIndices !== undefined && topIndices.length !== 0) {
             indexes.push(...topIndices);
         }
     }
     return indexes;
 }
-function rightMovesReiger(){
+
+function rightMovesReiger() {
     let indexes = [];
-    if(reigerHead < reigerTail){
+    if (reigerHead < reigerTail) {
         clickedBoxIndex = reigerTail;
-    }else{
+    } else {
         clickedBoxIndex = reigerHead;
     }
-    let possibleRightSteps = 5- (clickedBoxIndex + 1) % 5;
-    if((clickedBoxIndex + 1) % 5 !== 0){
+    let possibleRightSteps = 5 - (clickedBoxIndex + 1) % 5;
+    if ((clickedBoxIndex + 1) % 5 !== 0) {
         let rightIndices = checkIfRightPossibleReiger(possibleRightSteps);
-        if(rightIndices !== undefined && rightIndices.length !== 0){
+        if (rightIndices !== undefined && rightIndices.length !== 0) {
             indexes.push(...rightIndices);
         }
     }
     return indexes;
 }
-function topMovesReiger(){
+
+function topMovesReiger() {
     let indexes = [];
-    if(reigerHead < reigerTail){
+    if (reigerHead < reigerTail) {
         clickedBoxIndex = reigerHead;
-    }else{
+    } else {
         clickedBoxIndex = reigerTail;
     }
-    let possibleTopSteps = Math.floor(reigerHead / 5) - 1; // -1 because there is also a tail
-    if(clickedBoxIndex >=5){
+    let possibleTopSteps = Math.floor(reigerHead / 5) - 1; // -1 --> voor de staart
+    if (clickedBoxIndex >= 5) {
         let topIndices = checkIfTopPossibleReiger(possibleTopSteps);
-        if(topIndices !== undefined && topIndices.length !== 0){
+        if (topIndices !== undefined && topIndices.length !== 0) {
             indexes.push(...topIndices);
         }
     }
     return indexes;
 }
 
-// Possible move positions frog
-function checkIfLeftPossibleFrog(possibleLefts){
+// Moves voor de frogs die mogelijk zijn
+function checkIfLeftPossibleFrog(possibleLefts) {
     let somthingToJumpOver = false;
     let possibleCounter = 1;
-    while(boxes[clickedBoxIndex-possibleCounter].classList.contains('frog') ||
-    boxes[clickedBoxIndex-possibleCounter].classList.contains('leli') ||
-    boxes[clickedBoxIndex-possibleCounter].classList.contains('reigerHead') ||
-    boxes[clickedBoxIndex-possibleCounter].classList.contains('reigerTail')){
+    while (boxes[clickedBoxIndex - possibleCounter].classList.contains('frog') ||
+    boxes[clickedBoxIndex - possibleCounter].classList.contains('leli') ||
+    boxes[clickedBoxIndex - possibleCounter].classList.contains('reigerHead') ||
+    boxes[clickedBoxIndex - possibleCounter].classList.contains('reigerTail')) {
 
         somthingToJumpOver = true;
-        if(possibleCounter === possibleLefts){
+        if (possibleCounter === possibleLefts) {
             break;
         }
         possibleCounter++;
     }
-    if(somthingToJumpOver){
-        // Check if position is not out of the board
-        if((clickedBoxIndex-possibleCounter) >= 0 &&
-            (clickedBoxIndex-possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex-possibleCounter)){
-            return clickedBoxIndex-possibleCounter;
+    if (somthingToJumpOver) {
+        // Nakijken of pos niet uit de range van het bord is
+        if ((clickedBoxIndex - possibleCounter) >= 0 &&
+            (clickedBoxIndex - possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex - possibleCounter)) {
+            return clickedBoxIndex - possibleCounter;
         }
     }
 }
-function checkIfRightPossibleFrog(possibleRights){
+
+function checkIfRightPossibleFrog(possibleRights) {
     let somthingToJumpOver = false;
     let possibleCounter = 1;
-    while(boxes[clickedBoxIndex+possibleCounter].classList.contains('frog') ||
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('leli') ||
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('reigerHead') ||
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('reigerTail')){
+    while (boxes[clickedBoxIndex + possibleCounter].classList.contains('frog') ||
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('leli') ||
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('reigerHead') ||
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('reigerTail')) {
 
         somthingToJumpOver = true;
-        if(possibleCounter === possibleRights){
+        if (possibleCounter === possibleRights) {
             break;
         }
         possibleCounter++;
     }
-    if(somthingToJumpOver){
-        // Check if position is not out of the board
-        if((clickedBoxIndex+possibleCounter) >= 0 &&
-            (clickedBoxIndex+possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex+possibleCounter)){
-            return clickedBoxIndex+possibleCounter;
+    if (somthingToJumpOver) {
+        // Nakijken of pos niet uit de range van het bord is
+        if ((clickedBoxIndex + possibleCounter) >= 0 &&
+            (clickedBoxIndex + possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex + possibleCounter)) {
+            return clickedBoxIndex + possibleCounter;
         }
     }
 }
-function checkIfBottomPossibleFrog(possibleTops){
+
+function checkIfBottomPossibleFrog(possibleTops) {
     let somthingToJumpOver = false;
     let possibleCounter = 5;
     let maxStepReached = 0;
-    while(boxes[clickedBoxIndex+possibleCounter].classList.contains('frog') ||
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('leli') ||
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('reigerHead') ||
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('reigerTail')){
+    while (boxes[clickedBoxIndex + possibleCounter].classList.contains('frog') ||
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('leli') ||
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('reigerHead') ||
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('reigerTail')) {
 
         somthingToJumpOver = true;
         maxStepReached++;
-        if(maxStepReached === possibleTops){
+        if (maxStepReached === possibleTops) {
             break;
         }
-        possibleCounter+=5;
+        possibleCounter += 5;
     }
-    if(somthingToJumpOver){
-        // Check if position is not out of the board
-        if((clickedBoxIndex+possibleCounter) >= 0 &&
-            (clickedBoxIndex+possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex+possibleCounter)){
-            return clickedBoxIndex+possibleCounter;
+    if (somthingToJumpOver) {
+        // Nakijken of pos niet uit de range van het bord is
+        if ((clickedBoxIndex + possibleCounter) >= 0 &&
+            (clickedBoxIndex + possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex + possibleCounter)) {
+            return clickedBoxIndex + possibleCounter;
         }
     }
 }
-function checkIfTopPossibleFrog(possibleBottoms){
+
+function checkIfTopPossibleFrog(possibleBottoms) {
     let somthingToJumpOver = false;
     let possibleCounter = 5;
     let maxStepReached = 0;
-    while(boxes[clickedBoxIndex-possibleCounter].classList.contains('frog') ||
-    boxes[clickedBoxIndex-possibleCounter].classList.contains('leli') ||
-    boxes[clickedBoxIndex-possibleCounter].classList.contains('reigerHead') ||
-    boxes[clickedBoxIndex-possibleCounter].classList.contains('reigerTail')){
+    while (boxes[clickedBoxIndex - possibleCounter].classList.contains('frog') ||
+    boxes[clickedBoxIndex - possibleCounter].classList.contains('leli') ||
+    boxes[clickedBoxIndex - possibleCounter].classList.contains('reigerHead') ||
+    boxes[clickedBoxIndex - possibleCounter].classList.contains('reigerTail')) {
 
         somthingToJumpOver = true;
         maxStepReached++;
-        if(maxStepReached === possibleBottoms){
+        if (maxStepReached === possibleBottoms) {
             break;
         }
-        possibleCounter+=5;
+        possibleCounter += 5;
     }
-    if(somthingToJumpOver){
-        // Check if position is not out of the board
-        if((clickedBoxIndex-possibleCounter) >= 0 &&
-            (clickedBoxIndex-possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex-possibleCounter)){
-            return clickedBoxIndex-possibleCounter;
+    if (somthingToJumpOver) {
+        // Nakijken of pos niet uit de range van het bord is
+        if ((clickedBoxIndex - possibleCounter) >= 0 &&
+            (clickedBoxIndex - possibleCounter) <= 24 && possibleJumpBoxIsEmpty(clickedBoxIndex - possibleCounter)) {
+            return clickedBoxIndex - possibleCounter;
         }
     }
 }
 
 // Possible move positions reiger
-function checkIfLeftPossibleReiger(possibleLefts){
+function checkIfLeftPossibleReiger(possibleLefts) {
     let indexes = [];
     let possibleCounter = 1;
-    while(boxes[clickedBoxIndex-possibleCounter].classList.length === 1 &&
-    boxes[clickedBoxIndex-possibleCounter].classList.contains('box')){
+    while (boxes[clickedBoxIndex - possibleCounter].classList.length === 1 &&
+    boxes[clickedBoxIndex - possibleCounter].classList.contains('box')) {
 
         somthingToJumpOver = true;
-        if((clickedBoxIndex-possibleCounter) >= 0 &&
-            (clickedBoxIndex-possibleCounter) <= 24){
-            indexes.push(clickedBoxIndex-possibleCounter);
+        if ((clickedBoxIndex - possibleCounter) >= 0 &&
+            (clickedBoxIndex - possibleCounter) <= 24) {
+            indexes.push(clickedBoxIndex - possibleCounter);
 
         }
-        if(possibleCounter === possibleLefts){
+        if (possibleCounter === possibleLefts) {
             break;
         }
         possibleCounter++;
     }
     return indexes;
 }
-function checkIfRightPossibleReiger(possibleRights){
+
+function checkIfRightPossibleReiger(possibleRights) {
     let indexes = [];
     let possibleCounter = 1;
-    while(boxes[clickedBoxIndex+possibleCounter].classList.length === 1 &&
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('box')){
-        if((clickedBoxIndex+possibleCounter) >= 0 &&
-            (clickedBoxIndex+possibleCounter) <= 24){
-            indexes.push(clickedBoxIndex+possibleCounter);
+    while (boxes[clickedBoxIndex + possibleCounter].classList.length === 1 &&
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('box')) {
+        if ((clickedBoxIndex + possibleCounter) >= 0 &&
+            (clickedBoxIndex + possibleCounter) <= 24) {
+            indexes.push(clickedBoxIndex + possibleCounter);
         }
         somthingToJumpOver = true;
-        if(possibleCounter === possibleRights){
+        if (possibleCounter === possibleRights) {
             break;
         }
         possibleCounter++;
     }
     return indexes;
 }
-function checkIfBottomPossibleReiger(possibleBottoms){
+
+function checkIfBottomPossibleReiger(possibleBottoms) {
     let indexes = [];
     let possibleCounter = 5;
     let maxStepReached = 0;
 
-    while(boxes[clickedBoxIndex+possibleCounter].classList.length === 1 &&
-    boxes[clickedBoxIndex+possibleCounter].classList.contains('box')){
+    while (boxes[clickedBoxIndex + possibleCounter].classList.length === 1 &&
+    boxes[clickedBoxIndex + possibleCounter].classList.contains('box')) {
         maxStepReached++;
-        if((clickedBoxIndex+possibleCounter) >= 0 &&
-            (clickedBoxIndex+possibleCounter) <= 24){
-            indexes.push(clickedBoxIndex+possibleCounter);
+        if ((clickedBoxIndex + possibleCounter) >= 0 &&
+            (clickedBoxIndex + possibleCounter) <= 24) {
+            indexes.push(clickedBoxIndex + possibleCounter);
         }
-        if(maxStepReached === possibleBottoms){
+        if (maxStepReached === possibleBottoms) {
             break;
         }
-        possibleCounter+=5;
+        possibleCounter += 5;
     }
     return indexes;
 }
+
 function checkIfTopPossibleReiger(possibleTops) {
     let indexes = [];
     let possibleCounter = 5;
@@ -613,35 +619,16 @@ function checkIfTopPossibleReiger(possibleTops) {
 }
 
 
-// Reiger functions
-/*function convertMatrixTransformToDegree(matrix){
-    let values = matrix.split('(')[1],
-    values = values.split(')')[0],
-    values = values.split(',');
-
-    let a = values[0]; // 0.866025
-    let b = values[1]; // 0.5
-    let c = values[2]; // -0.5
-    let d = values[3]; // 0.866025
-
-    let angle = Math.round(Math.asin(b) * (180/Math.PI));
-    return angle;
-}*/
-function findClickedHeadOrTail(){
-    if(boxes[clickedBoxIndex].classList.contains('reigerHead')){
+function findClickedHeadOrTail() {
+    if (boxes[clickedBoxIndex].classList.contains('reigerHead')) {
         return 'Head';
-    }
-    else if(boxes[clickedBoxIndex].classList.contains('reigerTail')){
+    } else if (boxes[clickedBoxIndex].classList.contains('reigerTail')) {
         return 'Tail';
     }
 }
-function fillHeadFindTailAndDirection(){
+
+function fillHeadFindTailAndDirection() {
     reigerHead = clickedBoxIndex;
-
-    //let stylesOfClickedElement = getComputedStyle(boxes[clickedBoxIndex]);
-    //const transformDegreeMatrix = stylesOfClickedElement.transform;
-
-    //let degree = convertMatrixTransformToDegree(transformDegreeMatrix);
 
     findReigerDirection();
 
@@ -649,31 +636,29 @@ function fillHeadFindTailAndDirection(){
 
 
 }
-function fillTailFindHeadAndDirection(){
+
+function fillTailFindHeadAndDirection() {
     reigerTail = clickedBoxIndex;
-
-    //let stylesOfClickedElement = getComputedStyle(boxes[clickedBoxIndex]);
-    //const transformDegreeMatrix = stylesOfClickedElement.transform;
-
-    //let degree = convertMatrixTransformToDegree(transformDegreeMatrix);
 
     findReigerDirection();
 
     findHead();
 }
-function findReigerDirection(){
-    if(boxes[clickedBoxIndex].classList.contains('reigerLeftHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerLeftTailPosition')){
+
+function findReigerDirection() {
+    if (boxes[clickedBoxIndex].classList.contains('reigerLeftHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerLeftTailPosition')) {
         reigerDirection = 'Left';
-    }else if(boxes[clickedBoxIndex].classList.contains('reigerBottomHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerBottomTailPosition')){
+    } else if (boxes[clickedBoxIndex].classList.contains('reigerBottomHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerBottomTailPosition')) {
         reigerDirection = 'Bottom';
-    }else if(boxes[clickedBoxIndex].classList.contains('reigerRightHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerRightTailPosition')){
+    } else if (boxes[clickedBoxIndex].classList.contains('reigerRightHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerRightTailPosition')) {
         reigerDirection = 'Right';
-    }else if(boxes[clickedBoxIndex].classList.contains('reigerTopHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerLeftTopPosition')){
+    } else if (boxes[clickedBoxIndex].classList.contains('reigerTopHeadPosition') || boxes[clickedBoxIndex].classList.contains('reigerLeftTopPosition')) {
         reigerDirection = 'Top';
     }
 }
-function findTail(){
-    switch(reigerDirection) {
+
+function findTail() {
+    switch (reigerDirection) {
         case 'Left':
             reigerTail = clickedBoxIndex + 1;
             break;
@@ -687,11 +672,12 @@ function findTail(){
             reigerTail = clickedBoxIndex + 5;
             break;
         default:
-            reigerDirection = ''; // There went something wrong.
+            reigerDirection = ''; // ALS ER IETS FOUT GING
     }
 }
-function findHead(){
-    switch(reigerDirection) {
+
+function findHead() {
+    switch (reigerDirection) {
         case 'Left':
             reigerHead = clickedBoxIndex - 1;
             break;
@@ -705,28 +691,28 @@ function findHead(){
             reigerHead = clickedBoxIndex - 5;
             break;
         default:
-            reigerDirection = ''; // There went something wrong.
+            reigerDirection = ''; // ALS ER IETS FOUT GING
     }
 }
 
-function possibleJumpBoxIsEmpty(index){
-    if(boxes[index].classList.contains('frog') ||
+function possibleJumpBoxIsEmpty(index) {
+    if (boxes[index].classList.contains('frog') ||
         boxes[index].classList.contains('leli') ||
         boxes[index].classList.contains('reigerHead') ||
-        boxes[index].classList.contains('reigerTail')){
+        boxes[index].classList.contains('reigerTail')) {
         return false;
     }
     return true;
 }
 
-// Highlighting possible moves
-function loopAndHighlight(possibleMoveablePositions){
+// Moves die kunnen highlighten
+function loopAndHighlight(possibleMoveablePositions) {
     for (let i = 0; i < possibleMoveablePositions.length; i++) {
         boxes[possibleMoveablePositions[i]].classList.add('highlight');
     }
 }
 
-// CHECKEN OF SPELER GEWONNEN HEEFT
+// CHECKEN OF SPELER GEWONNEN HEEFT --> ALS GEWONNEN IS DISPLAYEN VAN HET MENUTJE GEWONNEN EN DAARIN KAN MEN NEXT LEVEL OF PREV LEVEL KIEZEN
 function checkWon() {
     let frogsInHole = 0;
     boxes.forEach(box => {
@@ -744,61 +730,59 @@ function checkWon() {
             levelCompletedDiv.classList.add('popup');
             console.log('you have won')
             gameWon = true;
-
-            // REDO LEVEL
-            const redoButton = document.querySelector('#redo');
-            redoButton.addEventListener('click', reloadLevel);
-
-
-            // NEXT LEVEL
-            const nextLevelButton = document.querySelector('#next');
-            nextLevelButton.addEventListener('click', loadNextLevel);
-          }, 100);
-    }
-
-    function reloadLevel() {
-        const levelCompletedDiv = document.querySelector('#levelCompleted');
-        levelCompletedDiv.classList.remove('popup')
-        levelCompletedDiv.classList.add('hidden');
-        fetch('../json/levels.json')
-            .then(response => response.json())
-            .then(data => {
-                const levels = data.levels;
-                const levelData = levels[currentLevel];
-                clearBoard(); // Clear the board before loading the next level
-                assignClassesToBoxes(levelData);
-            })
-            .catch(error => {
-                console.error('Error loading levels:', error);
-            });
-    }
-
-    function loadNextLevel() {
-        const levelCompletedDiv = document.querySelector('#levelCompleted');
-        levelCompletedDiv.classList.remove('popup')
-        levelCompletedDiv.classList.add('hidden');
-        currentLevel++; // Increment the current level index
-
-        fetch('../json/levels.json')
-            .then(response => response.json())
-            .then(data => {
-                const levels = data.levels;
-                const levelData = levels[currentLevel];
-                clearBoard(); // Clear the board before loading the next level
-                assignClassesToBoxes(levelData);
-            })
-            .catch(error => {
-                console.error('Error loading levels:', error);
-            });
-    }
-
-    function clearBoard() {
-        boxes.forEach(box => {
-            box.classList.remove('hole', 'leli', 'frog', 'reigerHead', 'reigerTail',
-                'reigerBottomHeadPosition', 'reigerLeftHeadPosition', 'reigerRightHeadPosition', 'reigerTopHeadPosition',
-                'reigerBottomTailPosition', 'reigerLeftTailPosition', 'reigerRightTailPosition', 'reigerTopTailPosition');
-        });
-        frogAmount = 0;
-        gameWon = false;
+        }, 100);
     }
 }
+
+function reloadLevel() {
+    const levelCompletedDiv = document.querySelector('#levelCompleted');
+    levelCompletedDiv.classList.remove('popup')
+    levelCompletedDiv.classList.add('hidden');
+    fetch('../json/levels.json')
+        .then(response => response.json())
+        .then(data => {
+            const levels = data.levels;
+            console.log(currentLevel); // NAKIJKEN WELK LEVEL IK ZIT
+            const levelData = levels[currentLevel];
+            clearBoard(); // ALLES DELETEN VAN VORIG LEVEL
+            assignClassesToBoxes(levelData);
+        })
+        .catch(error => {
+            console.error('Error loading levels:', error);
+        });
+}
+
+
+function loadNextLevel() {
+    const levelCompletedDiv = document.querySelector('#levelCompleted');
+    levelCompletedDiv.classList.remove('popup')
+    levelCompletedDiv.classList.add('hidden');
+    currentLevel += 1; // Increment the current level index
+    localStorage.setItem('currentLevel', currentLevel);
+
+    fetch('../json/levels.json')
+        .then(response => response.json())
+        .then(data => {
+            const levels = data.levels;
+            const levelData = levels[currentLevel];
+            console.log('level:' + currentLevel); // NAKIJKEN WELK LEVEL IK ZIT
+            clearBoard(); // ALLES DELETEN VAN VORIG LEVEL
+            assignClassesToBoxes(levelData);
+        })
+        .catch(error => {
+            console.error('Error loading levels:', error);
+        });
+}
+
+function clearBoard() {
+    boxes.forEach(box => {
+        box.classList.remove('hole', 'leli', 'frog', 'reigerHead', 'reigerTail',
+            'reigerBottomHeadPosition', 'reigerLeftHeadPosition', 'reigerRightHeadPosition', 'reigerTopHeadPosition',
+            'reigerBottomTailPosition', 'reigerLeftTailPosition', 'reigerRightTailPosition', 'reigerTopTailPosition');
+    });
+    frogAmount = 0;
+    gameWon = false;
+}
+
+document.querySelector('#redo').addEventListener('click', reloadLevel);
+document.querySelector('#next').addEventListener('click', loadNextLevel);
