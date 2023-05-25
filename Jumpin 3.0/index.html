@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/jumpinBoard.css">
     <script src="./javascript/jumpinLogica.js" defer></script>
@@ -40,7 +41,7 @@
                     </ul>
 
                     <select class="lang-menu" name="taal" aria-label="taal">
-                        <option value="ne">Dutch</option>
+                        <option value="ne" selected>Dutch</option>
                         <option value="de">German</option>
                         <option value="en">English</option>
                         <option value="fr">French</option>
@@ -64,6 +65,17 @@
                 </ul>
             </section>
             <section class="game">
+                <div id="levelCompleted" class="hidden">
+                    <p>Level Passed</p>
+                    <div class="buttons">
+                        <button id="redo">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                        <button id="next">
+                            <i class="fa-regular fa-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
                 <div class="game-board">
                     <div class="box"></div>
                     <div class="box"></div>

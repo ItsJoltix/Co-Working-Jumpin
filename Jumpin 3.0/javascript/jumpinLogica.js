@@ -6,21 +6,21 @@ let reigerHead;
 let reigerTail;
 let reigerDirection;
 
-let holes = [];
 let lelipads = [];
 
 let clickedBoxIndex;
 let clickedFrogOrReiger;
 let frogAmount = 0;
 
+let currentLevel = 0;
+let gameWon = false;
+
 fetch('../json/levels.json')
     .then(response => response.json())
     .then(data => {
         const levels = data.levels;
         // Hier wordt het level gekozen --> Deze uiteindelijk dus aanpassen naar geselecteerde level
-        const selectedLevel = 0;
-
-        const levelData = levels[selectedLevel];
+        const levelData = levels[currentLevel];
         assignClassesToBoxes(levelData);
     })
     .catch(error => {
@@ -43,7 +43,7 @@ function assignClassesToBoxes(levelData) {
         frogAmount++;
     });
 
-    if (levelData.reigerHead.length > 0) {
+    if (levelData.reigerHead) {
         levelData.reigerHead.forEach((index, reigerIndex) => {
             boxes[index].classList.add('reigerHead');
 
@@ -112,31 +112,32 @@ boxes.forEach(box => {
 // Add event listeners to boxes
 boxes.forEach(box => {
     box.addEventListener('click', () => {
-        clickedBoxIndex = Array.from(gameBoard.children).indexOf(box);
+        if (!gameWon) {
+            clickedBoxIndex = Array.from(gameBoard.children).indexOf(box);
 
 
-        // Remove all highlights if highlight is not clicked to move
-        if(!boxes[clickedBoxIndex].classList.contains('highlight')){
-            removeAllHighlights();
+            // Remove all highlights if highlight is not clicked to move
+            if (!boxes[clickedBoxIndex].classList.contains('highlight')) {
+                removeAllHighlights();
 
-            // Remeber last clicked frog or reiger
-            const frogOrReigerClicked = isFrogOrReigerClicked(clickedBoxIndex);
-            clickedFrogOrReiger = boxes[clickedBoxIndex].className.includes('frog') ? 'frog' : boxes[clickedBoxIndex].className.includes('reiger') ? 'reiger' : '';
+                // Remeber last clicked frog or reiger
+                const frogOrReigerClicked = isFrogOrReigerClicked(clickedBoxIndex);
+                clickedFrogOrReiger = boxes[clickedBoxIndex].className.includes('frog') ? 'frog' : boxes[clickedBoxIndex].className.includes('reiger') ? 'reiger' : '';
 
-            // Check if user chose frog or reiger element
-            frogOrReigerBoxClicked(frogOrReigerClicked, clickedFrogOrReiger);
-        }else{
-            if(clickedFrogOrReiger === 'frog'){
-                moveFrog();
+                // Check if user chose frog or reiger element
+                frogOrReigerBoxClicked(frogOrReigerClicked, clickedFrogOrReiger);
+            } else {
+                if (clickedFrogOrReiger === 'frog') {
+                    moveFrog();
+                } else if (clickedFrogOrReiger === 'reiger') {
+                    moveReiger();
+                }
+                removeAllHighlights();
             }
-            else if(clickedFrogOrReiger === 'reiger'){
-                moveReiger();
-            }
-            removeAllHighlights();
+
+            // Check if all frogs are in their hole
+            checkWon();
         }
-
-        // Check if all frogs are in their hole
-        checkWon();
     });
 });
 
@@ -725,19 +726,79 @@ function loopAndHighlight(possibleMoveablePositions){
     }
 }
 
-// Checking for win
-function checkWon(){
+// CHECKEN OF SPELER GEWONNEN HEEFT
+function checkWon() {
     let frogsInHole = 0;
     boxes.forEach(box => {
-        if(box.classList.contains('hole') && box.classList.contains('frog')){
+        if (box.classList.contains('hole') && box.classList.contains('frog')) {
             frogsInHole++;
         }
     });
 
-    if(frogsInHole === frogAmount){
+    console.log(frogsInHole)
+    console.log(frogAmount)
+    if (frogsInHole === frogAmount) {
         setTimeout(() => {
-            alert('Congratulations! You won!');
-            location.reload();
-        }, 100);
+            const levelCompletedDiv = document.querySelector('#levelCompleted');
+            levelCompletedDiv.classList.remove('hidden')
+            levelCompletedDiv.classList.add('popup');
+            console.log('you have won')
+            gameWon = true;
+
+            // REDO LEVEL
+            const redoButton = document.querySelector('#redo');
+            redoButton.addEventListener('click', reloadLevel);
+
+
+            // NEXT LEVEL
+            const nextLevelButton = document.querySelector('#next');
+            nextLevelButton.addEventListener('click', loadNextLevel);
+          }, 100);
+    }
+
+    function reloadLevel() {
+        const levelCompletedDiv = document.querySelector('#levelCompleted');
+        levelCompletedDiv.classList.remove('popup')
+        levelCompletedDiv.classList.add('hidden');
+        fetch('../json/levels.json')
+            .then(response => response.json())
+            .then(data => {
+                const levels = data.levels;
+                const levelData = levels[currentLevel];
+                clearBoard(); // Clear the board before loading the next level
+                assignClassesToBoxes(levelData);
+            })
+            .catch(error => {
+                console.error('Error loading levels:', error);
+            });
+    }
+
+    function loadNextLevel() {
+        const levelCompletedDiv = document.querySelector('#levelCompleted');
+        levelCompletedDiv.classList.remove('popup')
+        levelCompletedDiv.classList.add('hidden');
+        currentLevel++; // Increment the current level index
+
+        fetch('../json/levels.json')
+            .then(response => response.json())
+            .then(data => {
+                const levels = data.levels;
+                const levelData = levels[currentLevel];
+                clearBoard(); // Clear the board before loading the next level
+                assignClassesToBoxes(levelData);
+            })
+            .catch(error => {
+                console.error('Error loading levels:', error);
+            });
+    }
+
+    function clearBoard() {
+        boxes.forEach(box => {
+            box.classList.remove('hole', 'leli', 'frog', 'reigerHead', 'reigerTail',
+                'reigerBottomHeadPosition', 'reigerLeftHeadPosition', 'reigerRightHeadPosition', 'reigerTopHeadPosition',
+                'reigerBottomTailPosition', 'reigerLeftTailPosition', 'reigerRightTailPosition', 'reigerTopTailPosition');
+        });
+        frogAmount = 0;
+        gameWon = false;
     }
 }

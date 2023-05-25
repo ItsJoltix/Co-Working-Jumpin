@@ -28,7 +28,6 @@ select{
     border-radius: .2rem;
     padding: .2rem;
     margin-top: 1.5rem;
-    color: var(--primary);
 }
 
 select option{

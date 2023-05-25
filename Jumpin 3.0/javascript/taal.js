@@ -55,36 +55,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const select = document.querySelector('select');
     const allLang = ['ne', 'de', 'en', 'fr'];
 
-    select.addEventListener('change', changeURLLanguage);
-
-    function changeURLLanguage() {
-        let lang = select.value;
-        localStorage.setItem('selectedLanguage', lang);
-        location.reload();
-    }
+    select.addEventListener('change', changeLanguage);
 
     function changeLanguage() {
-        let storedLang = localStorage.getItem('selectedLanguage');
-        let hash = window.location.hash.substr(1, 2);
-        let lang = allLang.includes(storedLang) ? storedLang : 'ne'; // Default to 'ne' if no language is stored
+        let lang = select.value;
+        localStorage.setItem('selectedLanguage', lang);
+        updateTexts(lang);
+    }
 
-        if (!allLang.includes(hash)) {
-            location.href = window.location.pathname + '#ne';
-            location.reload();
-        }
-
+    function updateTexts(lang) {
         select.value = lang;
 
         for (let key in langArr) {
             let elem = document.querySelectorAll('.lng-' + key);
 
             for (let el = 0; el < elem.length; el++) {
-                if (elem) {
-                    elem[el].innerHTML = langArr[key][lang];
-                }
+                elem[el].innerHTML = langArr[key][lang];
             }
         }
     }
 
-    changeLanguage();
+    function initializeLanguage() {
+        let storedLang = localStorage.getItem('selectedLanguage');
+        let hash = window.location.hash.substr(1, 2);
+        let lang = allLang.includes(storedLang) ? storedLang : hash || 'ne';
+
+        if (!allLang.includes(hash)) {
+            location.href = window.location.pathname + '#ne';
+        }
+
+        updateTexts(lang);
+    }
+    initializeLanguage();
 });
