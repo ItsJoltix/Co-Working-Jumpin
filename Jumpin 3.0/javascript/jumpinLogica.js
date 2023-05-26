@@ -12,7 +12,12 @@ let clickedBoxIndex;
 let clickedFrogOrReiger;
 let frogAmount = 0;
 
-let currentLevel = parseInt(localStorage.getItem('currentLevel')) || 0;let gameWon = false;
+let currentLevel = parseInt(localStorage.getItem('currentLevel'));
+if(!currentLevel){
+    currentLevel = 0;
+}
+
+let gameWon = false;
 
 
 fetch('../json/levels.json')
