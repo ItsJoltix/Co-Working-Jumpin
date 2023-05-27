@@ -20,7 +20,7 @@ if(!currentLevel){
 let gameWon = false;
 
 
-fetch('../json/levels.json')
+fetch('./json/levels.json')
     .then(response => response.json())
     .then(data => {
         const levels = data.levels;
@@ -743,7 +743,7 @@ function reloadLevel() {
     const levelCompletedDiv = document.querySelector('#levelCompleted');
     levelCompletedDiv.classList.remove('popup')
     levelCompletedDiv.classList.add('hidden');
-    fetch('../json/levels.json')
+    fetch('./json/levels.json')
         .then(response => response.json())
         .then(data => {
             const levels = data.levels;
@@ -765,7 +765,7 @@ function loadNextLevel() {
     currentLevel += 1; // Increment the current level index
     localStorage.setItem('currentLevel', currentLevel);
 
-    fetch('../json/levels.json')
+    fetch('./json/levels.json')
         .then(response => response.json())
         .then(data => {
             const levels = data.levels;
