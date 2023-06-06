@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    
+    
+    
+    
+    
+    
+
+
+    <title>Homescreen</title>
+  <script type="module" crossorigin src="./assets/main-4399a758.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/hamburger-a33614a7.js">
+  <link rel="stylesheet" href="./assets/hamburger-3f8ff04f.css">
+  <link rel="stylesheet" href="./assets/index-e978e865.css">
+</head>
+<body>
+<div class="container">
+    <header class="full-bleed">
+        <div class="content">
+            <div class="logo">
+                <img src="./assets/Jumpin_logo-bc7fa450.png" alt="Frog that jumps logo">
+                <a href=""><span class="green">Jump</span>in</a>
+            </div>
+            <button aria-expanded="false" class="hamburger" id="menu">
+                <span aria-hidden="true" class="icon">
+                    <span></span><span></span><span></span>
+                </span>
+                <span>Menu</span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a class="active" href="./">Home</a></li>
+                    <li><a href="./spelregels">Spelregels</a></li>
+                    <li><a href="./review">Reviews</a></li>
+                </ul>
+            </nav>
+            <div id="languages">
+                <select class="lang-menu" name="taal" aria-label="taal">
+                    <option value="ne" selected>Dutch</option>
+                    <option value="de">German</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1 class="center"><span class="green">Jump</span>in</h1>
+        <div class="timeMute">
+            <div class="tijd">
+                <span id="timer-display">00:00:00</span>
+            </div>
+            <div class="muteUnmute">
+                <button class="mute-btn"><img src="./assets/172479_high_volume_icon-5006cea9.svg" alt="mute knop"></button>
+                <audio id="background_audio" autoplay loop="loop">
+                    <source class="myAudio" src="./assets/Wallpaper-b13ec744.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </div>
+        <div class="sectionsMain">
+            <section class="highScores">
+                <h2 class="lng-high_scores"><span class="green">High</span>scores</h2>
+                <ul>
+                    <li>1. Verplaats de<span class="green"> kikker</span></li>
+                    <li>2. Gebruik de <span class="green">lelipads</span></li>
+                    <li>3. Eventueel de <span class="green">reigers</span></li>
+                    <li>4. Wees <span class="green">snel</span></li>
+                </ul>
+            </section>
+
+            <section class="game">
+                <div id="startScreen" class="startscreen">
+                    <h2 class="lng-startgame">Welkom bij Jumpin, kies een naam en start</h2>
+                    <div class="buttons">
+                        <div class="nameInput">
+                            <label for="name">Naam:</label>
+                            <p class="error-message hidden">Voer een naam in!</p>
+                            <div>
+                                <input type="text" name="name" id="name">
+                                <button id="start" aria-label="start knop">
+                                    <i class="fa-solid fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="levelCompleted" class="hidden">
+                    <p>Level Passed</p>
+                    <div class="buttons">
+                        <button id="redo" aria-label="redo knop">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </button>
+                        <button id="next" aria-label="next level knop">
+                            <i class="fa-regular fa-circle-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="game-board">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+                <div class="timer">
+
+                </div>
+            </section>
+            <section class="snelsteTijden">
+                <h2 class="lng-snelste_tijden"><span class="green">Snelste</span> Tijden</h2>
+                <ul id="highscorestijden">
+                    <li>1. Davy - <span class="green">10s</span></li>
+                    <li>2. Bart - <span class="green">12s</span></li>
+                    <li>3. Bob - <span class="green">14s</span></li>
+                    <li>4. Nancy - <span class="green">19s</span></li>
+                    <li>5. Rudy - <span class="green">25s</span></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer class="full-bleed">
+        <div class="footerContent">
+            <div class="logo">
+                <img src="./assets/Jumpin_logo-bc7fa450.png" alt="Frog that jumps logo">
+                <a href=""><span class="green">Jump</span>in</a>
+            </div>
+            <div class="downloads">
+                <a href="#"><img src="./assets/google playstoregoogle playstore-529cd4b1.png"
+                                 alt="playstore download button"></a>
+                <a href="#"><img src="./assets/appstoreapp store-d6ffc8c1.png" alt="app store download button"></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

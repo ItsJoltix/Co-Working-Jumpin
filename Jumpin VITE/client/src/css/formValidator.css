@@ -1,0 +1,202 @@
+:root {
+  /* some variables feel free to add more */
+  --error-color: rgb(200,0,0);
+}
+
+
+section{
+  margin-top: 1.5rem;
+}
+
+form{ /* you can put this also on the form tag */
+  max-width: 31.25em; /* max-width of 500px by default em */
+  margin: 0 auto; /* align the section & the form to the center of the page */
+  padding: 5%;
+  border: 1px solid var(--greenTxt);
+  border-radius: 5px;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+h1 {
+  border-bottom: 1px solid var(--greenTxt);
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 0 0 1.25em 0;
+  padding: 0 0 0.5em 0;
+  text-align: center;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-bottom: 1.75em;
+}
+
+div.radiobutton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+div.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+  gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* to be consistent with other elements, see form > div, gap */
+legend {
+  margin-bottom: 0.5em;
+}
+/* Label */
+label > span.field-label, legend > span.field-label {
+  display: block;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+
+/* if there is an error */
+label > span.field-error, legend > span.field-error {
+  display: inline-block;
+  margin-top: 0.25em;
+  color: var(--error-color);
+  font-size: 0.75em;
+}
+
+/* hints or explanation for the user */
+label > span.field-hint, legend > span.field-hint {
+  display: inline-block;
+  margin: 0.25em 0em;
+  color: #666;
+}
+
+
+input {
+  border: 1px solid var(--greenTxt);
+  accent-color: var(--greenTxt);
+  font-size: 1em;
+  padding: 0.125em;
+  width: 100%; /* fallback if calc isn't working */
+  width: calc(100% - 0.25em); /* full width minus padding */
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+ 
+input[inputmode=numeric] { 
+  width: 5em; /* 5em = 16px * 5 = 80px */ 
+}
+
+input[type=radio], input[type=checkbox] {  
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
+ accent-color: var(--greenTxt);
+}
+
+input[type=radio] + label, 
+input[type=checkbox] + label > span.field-label  { 
+  font-size: 1em;
+  font-weight: normal;
+  display: inline; 
+  cursor: pointer;
+}
+
+.form{
+  border: 0;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #FFF;
+  font-weight: 600;
+  padding: 4% 8%;
+  cursor: pointer;
+  margin-top: 1.75em;
+  box-shadow: 0 0 4px 2px var(--greenTxt); /* subtle shadow */
+  transition: 600ms ease-in-out;
+}
+
+.form:hover {
+  background-color: var(--greenTxt);
+  color: var(--black);
+}
+
+
+input.invalid {
+  color: var(--error-color);
+  outline-color: var(--error-color);
+}
+
+label > abbr {
+  color: var(--error-color);
+  text-decoration: none;
+}
+
+label > span.field-error.hidden{
+  display: none;
+}
+
+legend > span.field-error.hidden{
+  display: none;
+}
+
+textarea{
+  border: 1px solid var(--greenTxt);
+  accent-color: var(--greenTxt);
+  font-size: 1em;
+  padding: 0.125em;
+  width: 100%; /* fallback if calc isn't working */
+  width: calc(100% - 0.25em); /* full width minus padding */
+}
+
+.allReviews{
+  display: flex;
+  justify-content: center;
+}
+
+.allReviews a{
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--primary);
+  border: 1px solid var(--greenTxt);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: 600ms ease-in-out;
+}
+
+.allReviews a:hover{
+  background: var(--green);
+  color: var(--black);
+}
+
+
+/* The code below is for a desktop or tablet */
+@media (min-width: 46.875em) {
+  h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0 0 1.5em 0;
+  }
+
+  label > span.field-label, legend > span.field-label {
+    font-size: 1.3em;
+  }
+}

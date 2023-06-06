@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  
+
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  
+  
+  
+
+  <title>Jumpin - Reviews</title>
+
+
+  <script type="module" crossorigin src="../../assets/reviews-6490315c.js"></script>
+  <link rel="modulepreload" crossorigin href="../../assets/hamburger-a33614a7.js">
+  <link rel="stylesheet" href="../../assets/hamburger-3f8ff04f.css">
+  <link rel="stylesheet" href="../../assets/index-d50c6e28.css">
+</head>
+<body>
+<div class="container">
+  <header class="full-bleed">
+    <div class="content">
+      <div class="logo">
+        <img src="../../assets/Jumpin_logo-bc7fa450.png" alt="Frog that jumps logo">
+        <a href="../../index.html"><span class="green">Jump</span>in</a>
+      </div>
+      <button aria-expanded="false" class="hamburger" id="menu">
+                <span aria-hidden="true" class="icon">
+                    <span></span><span></span><span></span>
+                </span>
+        <span>Menu</span>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="../../">Home</a></li>
+          <li><a href="../../spelregels">Spelregels</a></li>
+          <li><a class="active" href="../review">Reviews</a></li>
+        </ul>
+      </nav>
+      <div id="languages">
+        <select class="lang-menu" name="taal" aria-label="taal">
+          <option value="ne" selected>Dutch</option>
+          <option value="de">German</option>
+          <option value="en">English</option>
+          <option value="fr">French</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="filters">
+      <div class="order">
+        <label for="sortBy">Sorteer volgens:</label>
+        <select name="sortBy" id="sortBy">
+          <option value="score">Score</option>
+          <option value="date">Date</option>
+        </select>
+      </div>
+      <div class="order">
+        <label for="sortOrder">Ordenen volgens:</label>
+        <select name="sortOrder" id="sortOrder">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+      <button id="sortBtn">Sorteer</button>
+    </div>
+    <div id="reviews-container"></div>
+
+  </main>
+</div>
+</body>
+</html>

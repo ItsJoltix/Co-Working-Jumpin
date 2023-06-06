@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="../recources/Jumpin_logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/steps.css">
+    <script defer src="../javascript/taal.js" type="module"></script>
+    <script defer src="../javascript/hamburger.js" type="module"></script>
+    <script defer src="../javascript/steps.js" type="module"></script>
+    <title>Jumpin - Spelregels</title>
+</head>
+
+<body>
+<div class="container">
+    <header class="full-bleed">
+        <div class="content">
+            <div class="logo">
+                <img src="../recources/Jumpin_logo.png" alt="Frog that jumps logo">
+                <a href="../"><span class="green">Jump</span>in</a>
+            </div>
+            <button aria-expanded="false" class="hamburger" id="menu">
+                <span aria-hidden="true" class="icon">
+                    <span></span><span></span><span></span>
+                </span>
+                <span>Menu</span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="../">Home</a></li>
+                    <li><a class="active" href="../spelregels/">Spelregels</a></li>
+                    <li><a href="../review/">Reviews</a></li>
+                </ul>
+            </nav>
+            <div id="languages">
+                <select class="lang-menu" name="taal" aria-label="taal">
+                    <option value="ne" selected>Dutch</option>
+                    <option value="de">German</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="center underline"><span class="green">Spel</span>regels</h1>
+        <div class="rules">
+            <ul class="steps">
+                <li class="current"><a
+                        href="#step1"><span class="lng-stap1"></span> 1</a>
+                </li>
+
+                <li class=""><a
+                        href="#step2"><span class="lng-stap1"></span> 2</a>
+                </li>
+
+                <li class=""><a
+                        href="#step3"><span class="lng-stap1"></span> 3</a>
+                </li>
+            </ul>
+
+            <div id="step1" class="rulesContent">
+                <div class="contentStep">
+                    <div class="infoRules">
+                        <h3><span class="lng-stap1"></span> 1</h3>
+                        <p class="lng-text_stap1">Kies één van de 8 beschikbare levels om te spelen. De moeilijkheid
+                            stijgt per level.</p>
+                    </div>
+                    <img src="https://d32bxxnq6qs937.cloudfront.net/sites/default/files/Jumpin-1_1.jpg"
+                         alt="alle speelbare levels die gekozen kunnen worden">
+                </div>
+            </div>
+
+            <div id="step2" class="rulesContent">
+                <div class="contentStep">
+                    <div class="infoRules">
+                        <h3><span class="lng-stap2"></span> 2</h3>
+                        <p class="lng-text_stap2">Verplaats de kikkers en de reigers, totdat alle kikkers veilig in een
+                            hol zitten.</p>
+                    </div>
+                    <img src="https://d32bxxnq6qs937.cloudfront.net/sites/default/files/Jumpin-2_1.jpg"
+                         alt="Voorbeeld hoe kikkers en reigers zich verplaatsen">
+                </div>
+            </div>
+
+            <div id="step3" class="rulesContent">
+                <div class="contentStep">
+                    <div class="infoRules">
+                        <h3><span class="lng-stap3"></span> 3</h3>
+                        <p class="lng-text_stap3">Je hebt een oplossing gevonden wanneer alle kikkers veilig in een hol
+                            zitten.</p>
+                    </div>
+                    <img src="https://d32bxxnq6qs937.cloudfront.net/sites/default/files/Jumpin-3_1.jpg"
+                         alt="voorbeeld van een oplossing voor een level">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="full-bleed">
+        <div class="footerContent">
+            <div class="logo">
+                <img src="../recources/Jumpin_logo.png" alt="Frog that jumps logo">
+                <a href="../"><span class="green">Jump</span>in</a>
+            </div>
+            <div class="downloads">
+                <a href="#"><img src="../recources/google%20playstoregoogle%20playstore.png"
+                                 alt="playstore download button"></a>
+                <a href="#"><img src="../recources/appstoreapp%20store.png" alt="app store download button"></a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

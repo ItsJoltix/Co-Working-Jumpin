@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="../../recources/Jumpin_logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="../../css/common.css">
+  <script type="module" defer src="../../javascript/taal.js"></script>
+
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+  <link rel="stylesheet" href="../../css/reviews.css">
+  <script type="module" defer src="../../javascript/hamburger.js"></script>
+  <script type="module" defer src="../../javascript/getReviews.js"></script>
+
+  <title>Jumpin - Reviews</title>
+
+
+</head>
+<body>
+<div class="container">
+  <header class="full-bleed">
+    <div class="content">
+      <div class="logo">
+        <img src="../../recources/Jumpin_logo.png" alt="Frog that jumps logo">
+        <a href="../../"><span class="green">Jump</span>in</a>
+      </div>
+      <button aria-expanded="false" class="hamburger" id="menu">
+                <span aria-hidden="true" class="icon">
+                    <span></span><span></span><span></span>
+                </span>
+        <span>Menu</span>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="../../">Home</a></li>
+          <li><a href="../../spelregels/">Spelregels</a></li>
+          <li><a class="active" href="../">Reviews</a></li>
+        </ul>
+      </nav>
+      <div id="languages">
+        <select class="lang-menu" name="taal" aria-label="taal">
+          <option value="ne" selected>Dutch</option>
+          <option value="de">German</option>
+          <option value="en">English</option>
+          <option value="fr">French</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="filters">
+      <div class="order">
+        <label for="sortBy">Sorteer volgens:</label>
+        <select name="sortBy" id="sortBy">
+          <option value="score">Score</option>
+          <option value="date">Date</option>
+        </select>
+      </div>
+      <div class="order">
+        <label for="sortOrder">Ordenen volgens:</label>
+        <select name="sortOrder" id="sortOrder">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+      <button id="sortBtn">Sorteer</button>
+    </div>
+    <div id="reviews-container"></div>
+
+  </main>
+
+  <footer class="full-bleed">
+    <div class="footerContent">
+      <div class="logo">
+        <img src="../../recources/Jumpin_logo.png" alt="Frog that jumps logo">
+        <a href="../../"><span class="green">Jump</span>in</a>
+      </div>
+      <div class="downloads">
+        <a href="#"><img src="../../recources/google%20playstoregoogle%20playstore.png"
+                         alt="playstore download button"></a>
+        <a href="#"><img src="../../recources/appstoreapp%20store.png" alt="app store download button"></a>
+      </div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

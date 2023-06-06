@@ -1,0 +1,20 @@
+{
+    "successResponse": {
+        "status": "success",
+        "message": "Succes!",
+        "data":null,
+        "code": 200
+    },
+    "failResponse": {
+        "status": "error",
+        "message": "Er is een fout opgetreden",
+        "data": null,
+        "code": 400
+    },
+    "errorResponse": {
+        "status": "error",
+        "message": "Er is een fout opgetreden",
+        "data": null,
+        "code": 500
+    }
+}
